@@ -54,7 +54,7 @@ Erreurs : `{ "error": "message" }`
 | `/admin/` | `front_admin:80` (préfixe `/admin` retiré) |
 | `/api/` | `api:3000` (préfixe `/api` conservé) |
 
-⚠️ **Dans les fronts, utiliser des chemins relatifs** pour les fichiers (`href="style.css"`, pas `href="/style.css"`), sinon le front admin chargerait les fichiers du front users. Les appels API, eux, utilisent le chemin absolu `/api/...`.
+⚠️ **Dans les fronts, utiliser des chemins relatifs** pour les fichiers (`src="app.js"`, pas `src="/app.js"`), sinon le front admin chargerait les fichiers du front users. Les appels API, eux, utilisent le chemin absolu `/api/...`.
 
 ---
 
