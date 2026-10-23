@@ -1,4 +1,4 @@
-FROM node:22-alpine@sha256:025b8e975a61d94e33abeafaad1255ef44e4898cf1a1b6446860009c72e6d284
+FROM node:22-alpine@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --omit=dev
