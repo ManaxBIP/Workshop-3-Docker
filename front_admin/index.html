@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administration des adresses</title>
+  <!-- Chemins RELATIFS (sans "/" au début) : le front est servi sous /admin/ -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Administration : nouvelle adresse</h1>
+
+  <form id="form-adresse">
+    <input name="numero_rue" placeholder="Numéro" required>
+    <input name="nom_rue" placeholder="Nom de la rue" required>
+    <input name="code_postal" placeholder="Code postal" required>
+    <input name="ville" placeholder="Ville" required>
+    <button type="submit">Créer</button>
+  </form>
+  <p id="message"></p>
+
+  <!-- TODO (Personne B) : afficher la liste des adresses (GET /api/admin/adresses) -->
+
+  <script src="app.js"></script>
+</body>
+</html>
