@@ -1,18 +1,16 @@
-const express = require('express');
-const pool = require('../db');
+const express = require("express");
+const pool = require("../db");
 
 const router = express.Router();
 
-// GET /api/users/adresses : lister les adresses
-router.get('/adresses', async (req, res) => {
+router.get("/adresses", async (req, res) => {
   // TODO (Personne A) : SELECT * FROM adresse
-  res.status(501).json({ error: 'À implémenter' });
+  res.status(501).json({ error: "À implémenter" });
 });
 
-// GET /api/users/adresses/:id : voir une adresse
-router.get('/adresses/:id', async (req, res) => {
+router.get("/adresses/:id", async (req, res) => {
   // TODO (Personne A) : SELECT ... WHERE id = ? -> 404 si introuvable
-  res.status(501).json({ error: 'À implémenter' });
+  res.status(501).json({ error: "À implémenter" });
 });
 
 module.exports = router;

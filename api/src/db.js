@@ -1,6 +1,5 @@
-const mysql = require('mysql2/promise');
+const mysql = require("mysql2/promise");
 
-// Pool de connexions partagé par toutes les routes
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,

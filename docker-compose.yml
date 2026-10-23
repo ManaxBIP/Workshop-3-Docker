@@ -36,7 +36,7 @@ services:
 
   api:
     build: ./api
-    image: manaxbip0/workshop3-api:latest # change with sha256 after publishing to dockerhub
+    image: manaxbip0/workshop3-api:sha256:e50ffd79372d61484cc3af14522129233d3b381e0ec620dd0086e514428ab25f # v1.0.0 linux/amd64
     platform: linux/amd64
     container_name: w3-api
     restart: unless-stopped
@@ -70,7 +70,16 @@ services:
     networks:
       - backend
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u${MYSQL_USER}", "-p${MYSQL_PASSWORD}" ]
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "127.0.0.1",
+          "-u${MYSQL_USER}",
+          "-p${MYSQL_PASSWORD}",
+        ]
       interval: 5s
       timeout: 5s
       retries: 20
