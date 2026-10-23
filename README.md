@@ -20,8 +20,6 @@ Pour réinitialiser la base (et rejouer les migrations) : `docker compose down -
 
 ---
 
-## 📜 Contrat (à ne pas modifier sans prévenir l'autre)
-
 ### Table `adresse`
 
 | Colonne | Type | Remarque |
@@ -92,9 +90,3 @@ Navigateur ──► reverse-proxy (NGINX)
 - Healthcheck MySQL : l'API attend que la base soit prête.
 - Un seul port exposé (80).
 - Partie admin (`/admin/` et `/api/admin/`) protégée par authentification HTTP Basic dans le reverse-proxy. Le fichier de mots de passe est généré au démarrage depuis `ADMIN_USER` / `ADMIN_PASSWORD` (`reverse-proxy/40-generate-htpasswd.sh`).
-
-## Rendu
-
-```bash
-zip -r Workshop3-NOM1-PRENOM1-NOM2-PRENOM2.zip . -x "*/node_modules/*" ".git/*" ".env" "*.zip"
-```
