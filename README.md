@@ -1,6 +1,6 @@
 # Workshop 3 - Microservices Adresses
 
-Architecture microservices avec Docker Compose : une base MySQL, une API Node.js avec des routes distinctes pour l'admin et les utilisateurs, deux fronts, et un reverse-proxy NGINX comme unique point d'entrée (port 80).
+Architecture microservices avec Docker Compose : une base MySQL, une API Node.js avec des routes distinctes pour l'admin et les utilisateurs, deux fronts, et un reverse-proxy NGINX comme unique point d'entrée (port 8080).
 
 ## Démarrage
 
