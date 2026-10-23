@@ -6,7 +6,7 @@ services:
     container_name: w3-reverse-proxy
     restart: unless-stopped
     ports:
-      - "80:80" # seul port exposé à l'extérieur
+      - "8080:80"
     environment:
       ADMIN_USER: ${ADMIN_USER:-admin}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin}
