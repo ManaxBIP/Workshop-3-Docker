@@ -57,30 +57,8 @@ Erreurs : `{ "error": "message" }`
 | `/api/admin/` | `api:3000`, 🔒 authentification |
 | `/api/` | `api:3000` (préfixe `/api` conservé) |
 
-⚠️ **Dans les fronts, utiliser des chemins relatifs** pour les fichiers (`src="app.js"`, pas `src="/app.js"`), sinon le front admin chargerait les fichiers du front users. Les appels API, eux, utilisent le chemin absolu `/api/...`.
 
 ---
-
-## 👥 Répartition
-
-### Personne A : backend
-- [ ] `migrations/002_insert_adresses.sql` : adresses de démo
-- [ ] `api/src/routes/admin.js` : `GET` et `POST` (validation 400, try/catch 500)
-- [ ] `api/src/routes/users.js` : `GET` liste et `GET /:id` (404)
-- [ ] Tests avec `curl` (voir ci-dessous)
-
-### Personne B : fronts + infra
-- [ ] `front_users/` : affichage des adresses (avec le mock, puis branchement sur `/api/users/adresses`)
-- [ ] `front_admin/` : formulaire de création + liste + gestion des erreurs
-- [ ] Style des deux fronts
-- [ ] `docker-compose.yml` et `reverse-proxy/nginx.conf` (déjà fonctionnels, à ajuster si besoin)
-
-### Ensemble : intégration
-- [ ] `front_users/app.js` : remplacer `mock/adresses.json` par `/api/users/adresses`
-- [ ] `docker compose down -v && docker compose up -d --build` : tout repart de zéro
-- [ ] Parcours complet : créer sur `/admin/`, puis voir sur `/`
-- [ ] Vérifier que seul le port 80 répond
-- [ ] Zip du rendu (voir ci-dessous)
 
 ## Tests rapides de l'API
 
