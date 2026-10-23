@@ -1,6 +1,6 @@
 # Workshop 3 - Microservices Adresses
 
-Architecture microservices avec Docker Compose : une base MySQL (table `adresse`), une API Node.js avec des routes distinctes pour l'admin et les utilisateurs, deux fronts, et un reverse-proxy NGINX comme unique point d'entrée (port 80).
+Architecture microservices avec Docker Compose : une base MySQL, une API Node.js avec des routes distinctes pour l'admin et les utilisateurs, deux fronts, et un reverse-proxy NGINX comme unique point d'entrée (port 80).
 
 ## Démarrage
 
@@ -115,8 +115,3 @@ Navigateur ──► reverse-proxy (NGINX)
 ```bash
 zip -r Workshop3-NOM1-PRENOM1-NOM2-PRENOM2.zip . -x "*/node_modules/*" ".git/*" ".env" "*.zip"
 ```
-
-> ⚠️ Si une dépendance est ajoutée à l'API, régénérer le lock file avec le npm de l'image (le npm du Mac produit un lock incompatible avec `npm ci` dans `node:22-alpine`) :
-> ```bash
-> docker run --rm -v "$PWD/api":/app -w /app node:22-alpine npm install
-> ```
