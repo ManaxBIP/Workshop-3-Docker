@@ -36,7 +36,7 @@ services:
 
   api:
     build: ./api
-    image: workshop3-api:${API_VERSION:-1.0.0}
+    image: manaxbip0/workshop3-api:latest # change with sha256 after publishing to dockerhub
     platform: linux/amd64
     container_name: w3-api
     restart: unless-stopped
