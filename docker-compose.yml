@@ -40,7 +40,7 @@ services:
 
   api:
     build: ./api
-    image: manaxbip0/workshop3-api:f18d20d42c0253092ff28520716ec09cb1d52ff2 # v1.1.0
+    image: manaxbip0/workshop3-api:419184bc58618d82dca61c45b0b347ae64491b3c # v1.1.1
     container_name: w3-api
     restart: unless-stopped
     environment:
