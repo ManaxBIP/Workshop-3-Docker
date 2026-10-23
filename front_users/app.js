@@ -1,6 +1,3 @@
-// Fallback si l'API est injoignable ou renvoie une erreur
-const MOCK_URL = 'mock/adresses.json';
-
 const etat = document.getElementById('etat');
 const liste = document.getElementById('liste-adresses');
 
@@ -18,10 +15,9 @@ async function fetchJson(url) {
 
 async function recupererAdresses() {
   try {
-    return { adresses: await fetchJson('/api/users/adresses'), depuisMock: false };
+    return { adresses: await fetchJson('/api/users/adresses') };
   } catch (err) {
-    console.warn("API indisponible, utilisation du mock :", err);
-    return { adresses: await fetchJson(MOCK_URL), depuisMock: true };
+    console.warn("API indisponible :", err);
   }
 }
 

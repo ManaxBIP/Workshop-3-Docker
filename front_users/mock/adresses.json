@@ -1,5 +1,0 @@
-[
-  { "id": 1, "numero_rue": "12", "nom_rue": "rue de la Paix", "ville": "Paris", "code_postal": "75002" },
-  { "id": 2, "numero_rue": "5", "nom_rue": "avenue Jean Jaurès", "ville": "Lyon", "code_postal": "69007" },
-  { "id": 3, "numero_rue": "27", "nom_rue": "boulevard de la Liberté", "ville": "Lille", "code_postal": "59000" }
-]
