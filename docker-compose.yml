@@ -35,10 +35,10 @@ services:
     networks:
       - frontend
 
-  # ─── Personne A ────────────────────────────────────────────
   api:
     build: ./api
     image: workshop3-api:${API_VERSION:-1.0.0}
+    platform: linux/amd64
     container_name: w3-api
     restart: unless-stopped
     environment:
@@ -56,7 +56,8 @@ services:
         condition: service_healthy
 
   db:
-    image: mysql:${MYSQL_VERSION:-8.4}
+    image: mysql:8.4@sha256:2068651a18ac6048578647ea57b940ca2daed3f504ebe7fba6a93beeb39aaa1f # v8.4.13 linux/amd64
+    platform: linux/amd64
     container_name: w3-mysql
     restart: unless-stopped
     environment:
@@ -70,7 +71,16 @@ services:
     networks:
       - backend
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${MYSQL_ROOT_PASSWORD:-root}"]
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "127.0.0.1",
+          "-u${MYSQL_USER}",
+          "-p${MYSQL_PASSWORD}",
+        ]
       interval: 5s
       timeout: 5s
       retries: 20

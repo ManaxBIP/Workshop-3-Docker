@@ -1,4 +1,3 @@
--- Schéma validé dans le contrat (README.md) : ne pas modifier sans prévenir l'autre.
 CREATE TABLE adresse (
   id INT AUTO_INCREMENT PRIMARY KEY,
   numero_rue VARCHAR(10) NOT NULL,
