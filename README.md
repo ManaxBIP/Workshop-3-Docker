@@ -11,8 +11,10 @@ docker compose up -d --build
 | URL | Service |
 |---|---|
 | http://localhost/ | Front utilisateurs (consultation) |
-| http://localhost/admin/ | Front administrateur (création) |
+| http://localhost/admin/ | Front administrateur (création), protégé par identifiant : `admin` / `admin` par défaut |
 | http://localhost/api/health | État de l'API |
+
+Aucun fichier `.env` n'est nécessaire : des valeurs par défaut sont prévues. Pour changer l'identifiant admin, copier `.env.example` en `.env` et modifier `ADMIN_USER` / `ADMIN_PASSWORD`.
 
 Pour réinitialiser la base (et rejouer les migrations) : `docker compose down -v && docker compose up -d --build`
 
@@ -51,7 +53,8 @@ Erreurs : `{ "error": "message" }`
 | URL publique | Service interne |
 |---|---|
 | `/` | `front_users:80` |
-| `/admin/` | `front_admin:80` (préfixe `/admin` retiré) |
+| `/admin/` | `front_admin:80` (préfixe `/admin` retiré), 🔒 authentification |
+| `/api/admin/` | `api:3000`, 🔒 authentification |
 | `/api/` | `api:3000` (préfixe `/api` conservé) |
 
 ⚠️ **Dans les fronts, utiliser des chemins relatifs** pour les fichiers (`src="app.js"`, pas `src="/app.js"`), sinon le front admin chargerait les fichiers du front users. Les appels API, eux, utilisent le chemin absolu `/api/...`.
@@ -85,7 +88,8 @@ Erreurs : `{ "error": "message" }`
 curl localhost/api/health
 curl localhost/api/users/adresses
 curl localhost/api/users/adresses/1
-curl -X POST localhost/api/admin/adresses -H "Content-Type: application/json" \
+curl -u admin:admin localhost/api/admin/adresses
+curl -u admin:admin -X POST localhost/api/admin/adresses -H "Content-Type: application/json" \
   -d '{"numero_rue":"8","nom_rue":"rue Victor Hugo","ville":"Nantes","code_postal":"44000"}'
 ```
 
@@ -109,6 +113,7 @@ Navigateur ──► reverse-proxy (NGINX)
 - Migrations SQL versionnées (`001_`, `002_`…), exécutées automatiquement au premier démarrage.
 - Healthcheck MySQL : l'API attend que la base soit prête.
 - Un seul port exposé (80).
+- Partie admin (`/admin/` et `/api/admin/`) protégée par authentification HTTP Basic dans le reverse-proxy. Le fichier de mots de passe est généré au démarrage depuis `ADMIN_USER` / `ADMIN_PASSWORD` (`reverse-proxy/40-generate-htpasswd.sh`).
 
 ## Rendu
 

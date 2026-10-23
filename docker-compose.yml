@@ -7,8 +7,12 @@ services:
     restart: unless-stopped
     ports:
       - "80:80" # seul port exposé à l'extérieur
+    environment:
+      ADMIN_USER: ${ADMIN_USER:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin}
     volumes:
       - ./reverse-proxy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./reverse-proxy/40-generate-htpasswd.sh:/docker-entrypoint.d/40-generate-htpasswd.sh:ro
     networks:
       - frontend
     depends_on:
