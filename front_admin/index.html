@@ -26,7 +26,9 @@
     </form>
     <p id="message" class="mt-4"></p>
 
-    <!-- TODO (Personne B) : afficher la liste des adresses (GET /api/admin/adresses) -->
+    <h2 class="text-xl font-semibold mt-10 mb-4">Adresses existantes</h2>
+    <p id="etat" class="text-slate-500">Chargement…</p>
+    <ul id="liste-adresses" class="bg-white rounded-lg shadow divide-y divide-slate-100" hidden></ul>
   </main>
 
   <!-- Chemins RELATIFS (sans "/" au début) : le front est servi sous /admin/ -->
